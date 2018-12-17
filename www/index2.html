@@ -36,12 +36,7 @@
 		
 	
 <body>
-		<style>
-			.ui-btn{
-				border: none !important;
-		}
 
-		</style>
 <!-- Login Page -->
 <div data-role="page" id="login">
 <!-- /header -->
@@ -149,7 +144,7 @@
 
 	<div role="main" class="ui-content" style="margin: 3%">
 		<h1>Add your pet's information</h1>
-		<form method="post" action="petinfo.php" id="petinfoform">
+		<form method="POST" action="petinfo2.php" id="petinfoform" enctype="multipart/form-data">
 		<input type="text" name="pname" id="" value="" placeholder="Pet's Name*">
 		<label for="age" class="select">Age*:</label>
 		<select name="age" id="" data-native-menu="false">
@@ -186,8 +181,6 @@
 		</select>
 		<label for="weight">Pet's Weight:</label>
 		<input type="text" name="weight" id="" value="" placeholder="kg">
-		<label for="image">Pet's Photo:</label>
-		<input type="file" name="image" id="" value="">
 		<button type="submit" name="petinfosubmit" id="petinfosubmit" value="submit" style="background-color:#96BDE7; color:#FFFFFF; font-size: 15px; text-align: center; vertical-align: middle">Add Pet</button>
 		</form>
 		<span id="petinforesult"></span>
@@ -198,6 +191,16 @@
 	</div><!-- /footer -->
 </div><!-- /page -->
 	
+	
+<div data-role="page" id="petimage">
+		<!--Image_upload Yashvee 
+		<label for="image_upload">Pet's Photo:</label>-->
+		<form method="POST" action="petinfoimage.php" id="" enctype="multipart/form-data">
+		<input type="file" name="imageupload">
+		<!--Image_upload Yashvee -->
+		<button type="submit" name="petimagesubmit" id="" value="submit" style="background-color:#96BDE7; color:#FFFFFF; font-size: 15px; text-align: center; vertical-align: middle">Upload Image</button>
+		</form>
+	</div>
 <!-- petlover sign up page -->
 <div data-role="page" id="petloversignup">
 
@@ -289,19 +292,8 @@
 	</div>
 	
 	<!-- /content -->
-	<div class="ui-grid-a" id="petownerhead">
 	
-	</div>
-	<hr style="color:rgba(00, 00, 00, 0.05); margin-left: 3%; margin-right: 3%">
-	<a href="#" class="ui-btn ui-icon-user ui-btn-icon-right" style="background-color:rgba(00, 00, 00, 0);"><p style="text-align: left; font-size: 16px; font-weight: 100;">View and edit profile</p></a>
-	<hr style="color:rgba(00, 00, 00, 0.05); margin-left: 3%; margin-right: 3%">
-	<a href="#" class="ui-btn ui-icon-edit ui-btn-icon-right" style="background-color:rgba(00, 00, 00, 0);"><p style="text-align: left; font-size: 16px; font-weight: 100;">View and edit your pet's profile</p></a>
-	<hr style="color:rgba(00, 00, 00, 0.05); margin-left: 3%; margin-right: 3%">
-	<a href="#" class="ui-btn ui-icon-phone ui-btn-icon-right" style="background-color:rgba(00, 00, 00, 0);"><p style="text-align: left; font-size: 16px; font-weight: 100;">Get help</p></a>
-	<hr style="color:rgba(00, 00, 00, 0.05); margin-left: 3%; margin-right: 3%">
-	<a href="#" class="ui-btn ui-icon-comment ui-btn-icon-right" style="background-color:rgba(00, 00, 00, 0);"><p style="text-align: left; font-size: 16px; font-weight: 100;">Give us feedback</p></a>
-	<hr style="color:rgba(00, 00, 00, 0.05); margin-left: 3%; margin-right: 3%">
-	<a href="#" class="ui-btn ui-icon-delete ui-btn-icon-right" style="background-color:rgba(00, 00, 00, 0);"><p style="text-align: left; font-size: 16px; font-weight: 100;">Log out</p></a>
+	
 	<div data-role="footer" data-position="fixed">
 	<div data-role="navbar">
 		<ul>
@@ -313,11 +305,7 @@
 	</div>
 	
 </div><!-- /page -->
-
-<!-- Pet owner profile detail page -->
 	
-	
-
 <!-- Pet owner match page -->
 <div data-role="page" id="petownermatch">
 
@@ -455,7 +443,7 @@
 	function getpetownerhomepage() {
 /* testwebservice user returns a JSON object with an array of users IDs and login names (user_login)  */
 /* alert("in the gettheuser");  */
-		URL="http://websys3.stern.nyu.edu/websysF18/websysF182/www/getpetloverinfo.php";
+		URL="http://websys3.stern.nyu.edu/websysF18/websysF182/www/petownerhomepage.php";
   		$.getJSON(URL, function(data){                      
         console.log(data);		
         $.each(data['users'], function(index, value) {
@@ -473,14 +461,14 @@
 	function getpetloverhomepage() {
 /* testwebservice user returns a JSON object with an array of users IDs and login names (user_login)  */
 /* alert("in the gettheuser");  */
-		URL="http://websys3.stern.nyu.edu/websysF18/websysF182/www/getpetinfo.php";
+		URL="http://websys3.stern.nyu.edu/websysF18/websysF182/www/petloverhomepage.php";
   		$.getJSON(URL, function(data){                      
         console.log(data);		
         $.each(data['users'], function(index, value) {
 /*            alert(value['user']['user_login']);   */
               console.log(value);
               /* set first option to be selected  */
-			  $('#petloverhomecontent').append("<a href=\"#petownersubpage.html\" data-transition=\"slide\"><img src=\"img/pet.jpg\" id=\"pet\" value="+ value['user']['PET_ID'] + " style=\"width:100%;\"></a></div><div class=\"main\" style=\"margin-left:5%; margin-bottom:5%; text-align:left;\"><h3 class=\"petloverintro\">" + value['user']['PNAME'] + " "  + "</h3> <p> Breed:" + value['user']['BREED'] + ";  " + " Gender:" + value['user']['GENDER'] + "</p> <p>Age:" + value['user']['AGE'] + ";  " + " Weight:" + value['user']['WEIGHT'] + "kg</p></div>" );
+			  $('#petloverhomecontent').append("<a href=\"#petownersubpage.html\" data-transition=\"slide\"><img src=\"img/pet.jpg\" id=\"pet\" value="+ value['user']['PET_ID'] + " style=\"width:100%;\"></a></div><div class=\"main\" style=\"margin-left:5%; margin-bottom:5%; text-align:left;\"><h3 class=\"petloverintro\">" + value['user']['PNAME'] + " "  + "</h3> <p> Breed:" + value['user']['BREED'] + ";  " + " Gender:" + value['user']['BREED'] + "</p> <p>Age:" + value['user']['AGE'] + ";  " + " Weight:" + value['user']['WEIGHT'] + "kg</p></div>" );
                //$('#userform').append("<option value=" + value['user']['first_name']  + ">" + value['user']['first_name'] + "</option>"); 
                                		              }
                                     );			
@@ -488,25 +476,6 @@
 		 );
                        };
 		
-
-//Profile page
-	function getpetownerheader() {
-/* testwebservice user returns a JSON object with an array of users IDs and login names (user_login)  */
-/* alert("in the gettheuser");  */
-		URL="http://websys3.stern.nyu.edu/websysF18/websysF182/www/getpetowneruserinfo.php";
-  		$.getJSON(URL, function(data){                      
-        console.log(data);		
-        $.each(data['users'], function(index, value) {
-/*            alert(value['user']['user_login']);   */
-              console.log(value);
-              /* set first option to be selected  */
-			  $('#petownerhead').append("<div class=\"ui-block-a\" style=\"margin-top:10px;padding-left:5%;height:100px;\"><h2> Hi, "  + " " + value['user']['FNAME'] + "</h2></div><div class=\"ui-block-b\" style=\"text-align:right;margin-top:10px;height:100px;padding-right:5%\"><a href=\"#\" data-transition=\"slide\"><img src=\"img/user.jpg\" id=" + value['user']['EMAIL_ID'] + " value="+ value['user']['EMAIL_ID'] + " style=\"height:70px;border-radius:50%;\"></a></div>" );
-               //$('#userform').append("<option value=" + value['user']['first_name']  + ">" + value['user']['first_name'] + "</option>"); 
-                               		              }
-                                    );			
-                                  }
-		 );
-                       };
 		
 		
 //present homepage
@@ -516,9 +485,8 @@ $(document).ready(function() {
     /*  alert("in document.ready");  */
     /* Call webservice to return list of users who have posted  */
     /* and then creates select option for each user in the select dropdown list */
-	getpetownerhomepage();
-	getpetloverhomepage();
-	getpetownerheader();
+	getpetownerhomepage()
+	getpetloverhomepage()
 	
 /* In Jquery mobile, the default element is not set, so we need to pick one */
     /* Pick the first to be selected, and then let the user change it  */  
