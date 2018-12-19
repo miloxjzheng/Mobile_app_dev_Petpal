@@ -1,0 +1,1404 @@
+<!DOCTYPE html>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+    <head>
+        <!--
+        Customize this policy to fit your own app's needs. For more guidance, see:
+            https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
+        Some notes:
+            * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+            * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+            * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+                * Enable inline JS: add 'unsafe-inline' to default-src
+        -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-soale=1">
+	<link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css">
+	<title>PetPal</title>
+	</head>
+		
+	
+<body>
+		<style>
+			.ui-btn{
+				border: none !important;
+		}
+
+
+		</style>
+	
+	
+	
+	
+	
+	
+	
+	
+<!--==================================================Log in =======================================================-->
+	
+<!-- Login Page -->
+<div data-role="page" id="login">
+<!-- /header -->
+
+	<div role="main" class="ui-content" style="margin:3%">
+		<img src="img/logo.png" alt="login image" width=100%>
+		<h2 style="text-align: center; font-weight: 200;">Welcome to Pet Pal</h2>
+		<form method="post" action="http://websys3.stern.nyu.edu/websysF18/websysF182/PHP/login.php" id="homeloginform">
+		<input type="text" name="email" style="width:70%" id="" value="" placeholder="Your Email*">
+		<input type="password" name="pwd" style="width:70%" id="" value="" autocomplete="off" placeholder="Your Password*">
+		<button type="submit" name="homelogin" id="homelogin" value="submit" style="background-color:#96BDE7; color:#FFFFFF; font-size: 15px; text-align: center; vertical-align: middle">Log In</button>
+		<p style="font-weight: 200;" >Don't have an account? <a href="#signup" style="text-decoration: none !important; ">Sign Up</a></p>
+		</form>
+		<div id="homeloginresult"></div>
+	</div><!-- /content -->
+
+	
+</div><!-- /page -->
+
+	
+	
+	
+	
+	
+	
+<!-- sign up direction page -->
+<div data-role="page" id="signup">
+
+<!-- /header -->
+
+	<div role="main" class="ui-content">
+		<h1>Sign Up</h1>
+		<h3 style="font-weight: 200;" >Tell us more about yourself!</h3>
+		<br>
+		<div class="ui-grid-solo" style="text-align: center;">
+		<h3 style="font-weight: 200;" >Are you are pet owner or pet lover?</h3>
+		</div>
+		<br>
+		<div class="ui-grid-solo" style="text-align: center;">
+		<a href="#petownersignup" class="ui-input-btn ui-btn ui-corner-all ui-btn-inline" style="width: 50%; background-color:#96BDE7; color:#FFFFFF; font-size: 25px; text-align: center; vertical-align: middle">Pet Owner</a>
+		</div>
+		<br>
+		<div class="ui-grid-solo" style="text-align: center;">
+		<a href="#petloversignup" class="ui-input-btn ui-btn ui-corner-all ui-btn-inline" style="width: 50%; background-color:#96BDE7; color:#FFFFFF; font-size: 25px; text-align: center; vertical-align: middle">Pet Lover</a>
+		</div>
+	</div><!-- /content -->
+
+	<!--<div data-role="footer" data-position="fixed">
+		<h4>Page Footer</h4>
+	</div><!-- /footer -->
+</div><!-- /page -->
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+<!--==================================================Pet Owner Sign up ==========================================-->
+
+	
+	
+	
+	
+	
+	
+<!-- petowner sign up page -->
+<div data-role="page" id="petownersignup">
+
+<!-- /header -->
+
+	<div role="main" class="ui-content" style="margin: 3%">
+		<h1>Sign Up</h1>
+		<h3 style="font-weight: 200;" >for pet owner</h3>
+		<form method="post" action="http://websys3.stern.nyu.edu/websysF18/websysF182/PHP/petownerregister.php" id="petownerform">
+			<input type="text" name="email" id="" value="" placeholder="Your Email*">
+			<input type="password" name="pwd1" id="" value="" autocomplete="off" placeholder="Your Password*">
+			<input type="password" name="pwd2" id="" value="" autocomplete="off" placeholder="Confrom Password*">
+		<div class="ui-grid-a">
+			<div class="ui-block-a" style="width:45%; margin-right: 5%"><input type="text" name="fname" id="" value="" placeholder="First name*"></div>
+			<div class="ui-block-b" style="width:45%; margin-left: 5%"><input type="text" name="lname" id="" value="" placeholder="Last name*"></div>
+			</div>
+		<select name="gender" id="" data-native-menu="false">
+			<option value="">Gender</option>
+			<option value="Male">Male</option>
+			<option value="Female">Female</option>
+		</select>
+		<label for="DOB">Date of Birth:</label>
+		<input type="date" name="DOB" id="" value="">
+		<input type="text" name="phone" id="" value="" placeholder="Your Phone Number*">
+		<label for="location" class="select">Location:</label>
+		<select name="location" id="" data-native-menu="false">
+			<option value="">Choose Your Location</option>
+			<option value="Manhattan">Manhattan</option>
+			<option value="Brooklyn">Brooklyn</option>
+			<option value="Queens">Queens</option>
+			<option value="Bronx">The Bronx</option>
+			<option value="StatenIsland">Staten Island</option>
+		</select>
+		<!--
+		<label for="image">Your Photo:</label>
+		<input type="file" name="image" id="" value="">
+		-->
+		<button type="submit" name="petownersubmit" id="petownersubmit" value="submit" style="background-color:#96BDE7; color:#FFFFFF; font-size: 15px; text-align: center; vertical-align: middle">Sign Up</button>
+		</form>
+		<span id="petownerresult"></span>
+	</div><!-- /content -->
+
+	<!--<div data-role="footer" data-position="fixed">
+		<h4>Page Footer</h4>
+	</div><!-- /footer -->
+</div><!-- /page -->
+	
+
+	
+	
+	
+	
+	
+	
+	
+<!-- pet info input page -->
+<div data-role="page" id="petinfoinput">
+
+<!-- /header -->
+
+	<div role="main" class="ui-content" style="margin: 3%">
+		<h1>Add your pet's information</h1>
+		<form method="post" action="http://websys3.stern.nyu.edu/websysF18/websysF182/PHP/petinfo.php" id="petinfoform">
+		<input type="text" name="pname" id="" value="" placeholder="Pet's Name*">
+		<label for="age" class="select">Age*:</label>
+		<select name="age" id="" data-native-menu="false">
+    		<option value="">Choose Your Pet's Age Range</option>
+      		<option value="Less than 1 year old">Less than 1 year old</option>
+        	<option value="2-4 years old">2-4 years old</option>
+        	<option value="4-6 years old">4-6 years old</option>
+			<option value="6-8 years old">6-8 years old</option>
+			<option value="8-10 years old">8-10 years old</option>
+			<option value="Over 10 years old">Over 10 years old</option>
+		</select>
+		<label for="gender" class="select">Gender*:</label>
+		<select name="gender" id="" data-native-menu="false">
+    		<option value="">Choose Your Pet's Gender</option>
+        	<option value="Male">Male</option>
+        	<option value="Female">Female</option>
+		</select>
+		<label for="breed" class="select">Breed*:</label>
+		<select name="breed" id="" data-native-menu="false">
+    		<option value="">Choose Breed of Your Pet</option>
+        	<option value="Cocker Spaniel">Cocker Spaniel</option>
+       	 	<option value="Beagel">Beagel</option>
+        	<option value="Boston Terrier">Boston Terrier</option>
+			<option value="Golden Retriever">Golden Retriever</option>
+			<option value="Poodie">Poodie</option>
+			<option value="Pomeranian">Pomeranian</option>
+		</select>
+		<label for="neutured" class="select">Neutured*:</label>
+		<select name="neutured" id="" data-native-menu="false">
+        	<option value="Yes">Yes</option>
+       	 	<option value="No">No</option>
+		</select>
+		<label for="weight">Pet's Weight:</label>
+		<input type="text" name="weight" id="" value="" placeholder="kg">
+		<!--
+		<label for="image">Pet's Photo:</label>
+		<input type="file" name="image" id="" value="">
+		-->
+		<button type="submit" name="petinfosubmit" id="petinfosubmit" value="submit" style="background-color:#96BDE7; color:#FFFFFF; font-size: 15px; text-align: center; vertical-align: middle">Add Pet</button>
+		</form>
+		<span id="petinforesult"></span>
+	</div><!-- /content -->
+
+	<!--<div data-role="footer" data-position="fixed">
+		<h4>Page Footer</h4>
+	</div><!-- /footer -->
+</div><!-- /page -->
+	
+	
+	
+	
+<!--==================================================Pet Lover Sign up ==========================================-->	
+	
+	
+	
+	
+<!-- petlover sign up page -->
+<div data-role="page" id="petloversignup">
+
+<!-- /header -->
+
+	<div role="main" class="ui-content" style="margin: 3%">
+		<h1>Sign Up</h1>
+		<h3 style="font-weight: 200;" >for pet lover</h3>
+		<form method="post" action="http://websys3.stern.nyu.edu/websysF18/websysF182/PHP/petloverregister.php" id="petloverform">
+			<input type="text" name="email" id="" value="" placeholder="Your Email*">
+			<input type="password" name="pwd1" id="" value="" autocomplete="off" placeholder="Your Password*">
+			<input type="password" name="pwd2" id="" value="" autocomplete="off" placeholder="Confrom Password*">
+		<div class="ui-grid-a">
+			<div class="ui-block-a" style="width:45%; margin-right: 5%"><input type="text" name="fname" id="" value="" placeholder="First name*"></div>
+			<div class="ui-block-b" style="width:45%; margin-left: 5%"><input type="text" name="lname" id="" value="" placeholder="Last name*"></div>
+			</div>
+		<select name="gender" id="" data-native-menu="false">
+			<option value="">Gender</option>
+			<option value="Male">Male</option>
+			<option value="Female">Female</option>
+		</select>
+		<label for="DOB">Date of Birth:</label>
+		<input type="date" name="DOB" id="" value="">
+		<input type="text" name="phone" id="" value="" placeholder="Your Phone Number*">
+		<label for="breed" class="select">Preferred Breed:</label>
+		<select name="breed" id="" data-native-menu="false">
+			<option value="">Choose Your Preferred Breed</option>
+        	<option value="Cocker Spaniel">Cocker Spaniel</option>
+       	 	<option value="Beagel">Beagel</option>
+        	<option value="Boston Terrier">Boston Terrier</option>
+			<option value="Golden Retriever">Golden Retriever</option>
+			<option value="Poodie">Poodie</option>
+			<option value="Pomeranian">Pomeranian</option>
+		</select>
+		<label for="location" class="select">Location:</label>
+		<select name="location" id="" data-native-menu="false">
+			<option value="">Choose Your Location</option>
+			<option value="Manhattan">Manhattan</option>
+			<option value="Brooklyn">Brooklyn</option>
+			<option value="Queens">Queens</option>
+			<option value="Bronx">The Bronx</option>
+			<option value="StatenIsland">Staten Island</option>
+		</select>
+		<!--
+		<label for="image">Your Photo:</label>
+		<input type="file" name="image" id="" value="">
+		-->
+		<button type="submit" name="petloversubmit" id="petloversubmit" value="submit" style="background-color:#96BDE7; color:#FFFFFF; font-size: 15px; text-align: center; vertical-align: middle">Sign Up</button>
+		</form>
+		<span id="petloverresult"></span>
+	</div><!-- /content -->
+
+	<!--<div data-role="footer" data-position="fixed">
+		<h4>Page Footer</h4>
+	</div><!-- /footer -->
+</div><!-- /page -->
+
+
+	
+<!--==================================================Pet Owner HomePage ==========================================-->
+
+
+<!-- Pet owner homepage page -->
+<div data-role="page" id="petownerhome">
+
+<!-- /header -->
+
+	<div data-role="header" style="background-color:#96BDE7; color:#FFFFFF;" data-position="fixed">
+		<h1>Home</h1>
+	</div>
+	<!-- /content -->
+	<div class="main" id="petownerhomecontent">
+	
+	</div>
+	<div data-role="footer" data-position="fixed">
+	<div data-role="navbar">
+		<ul>
+		<li><a href="#petownermatch" data-icon="heart">Match</a></li>
+		<li><a href="#petownerhome" data-icon="home">Home</a></li>
+		<li><a href="#petowneruser" data-icon="user">Profile</a></li>
+		</ul>
+		</div> 
+	</div>
+	
+</div><!-- /page -->
+
+
+	
+	
+	
+	
+<!--==================================================Pet Owner Subpage  ==========================================-->
+<!-- Pet owner sub page -->
+<div data-role="page" id="petownersubpage">
+
+<!-- /header -->
+
+	<div data-role="header" style="background-color:#96BDE7; color:#FFFFFF;" data-position="fixed">
+		<a href="#petownerhome" data-transition="slide" data-direction="reverse" style="text-decoration: none !important; color:#FFFFFF; font-weight: 400; background-color:transparent; border: none;border: none !important;box-shadow: none !important; outline: 0;">Back</a>
+		<h1>Detail</h1>
+	</div>
+	<!-- /content -->
+	<div class="main" id="petownersubpagecontent">
+	
+	</div>
+	<div data-role="footer" data-position="fixed">
+	<div data-role="navbar">
+		<ul>
+		<li><a href="#petownermatch" data-icon="heart">Match</a></li>
+		<li><a href="#petownerhome" data-icon="home">Home</a></li>
+		<li><a href="#petowneruser" data-icon="user">Profile</a></li>
+		</ul>
+		</div> 
+	</div>
+	
+</div><!-- /page -->
+	
+	
+	
+<!--==================================================Pet Owner User Page ==========================================-->	
+	
+	
+<!-- Pet owner user page -->
+<div data-role="page" id="petowneruser">
+
+<!-- /header -->
+
+	<div data-role="header" style="background-color:#96BDE7; color:#FFFFFF;" data-position="fixed">
+		<h1>Profile</h1>
+	</div>
+	
+	<!-- /content -->
+	<div class="ui-grid-a" id="petownerhead">
+	
+	</div>
+	<hr style="color:rgba(00, 00, 00, 0.05); margin-left: 3%; margin-right: 3%">
+	<div style="margin-left: 3%; margin-right: 5%"><a href="#petownerview" class="ui-btn ui-icon-user ui-btn-icon-right" data-transition="slide" style="background-color:rgba(00, 00, 00, 0);"><p style="text-align: left; font-size: 16px; font-weight: 100;">View and edit profile</p></a></div>
+	<hr style="color:rgba(00, 00, 00, 0.05); margin-left: 3%; margin-right: 3%">
+	<div style="margin-left: 3%; margin-right: 5%"><a href="#petinfoview" class="ui-btn ui-icon-edit ui-btn-icon-right" data-transition="slide" style="background-color:rgba(00, 00, 00, 0);"><p style="text-align: left; font-size: 16px; font-weight: 100;">View and edit your pet's profile</p></a></div>
+	<hr style="color:rgba(00, 00, 00, 0.05); margin-left: 3%; margin-right: 3%">
+	<div style="margin-left: 3%; margin-right: 5%"><a href="#petownergethelp" class="ui-btn ui-icon-phone ui-btn-icon-right" data-transition="slide" style="background-color:rgba(00, 00, 00, 0);"><p style="text-align: left; font-size: 16px; font-weight: 100;">Get help</p></a></div>
+	<hr style="color:rgba(00, 00, 00, 0.05); margin-left: 3%; margin-right: 3%">
+	<div style="margin-left: 3%; margin-right: 5%"><a href="#petownerfeedback" class="ui-btn ui-icon-comment ui-btn-icon-right" data-transition="slide" style="background-color:rgba(00, 00, 00, 0);"><p style="text-align: left; font-size: 16px; font-weight: 100;">Give us feedback</p></a></div>
+	<hr style="color:rgba(00, 00, 00, 0.05); margin-left: 3%; margin-right: 3%">
+	<div style="margin-left: 3%; margin-right: 5%"><a href="#login" class="ui-btn ui-icon-delete ui-btn-icon-right" data-transition="slide" style="background-color:rgba(00, 00, 00, 0);"><p style="text-align: left; font-size: 16px; font-weight: 100;">Log out</p></a></div>
+	<div data-role="footer" data-position="fixed">
+	<div data-role="navbar">
+		<ul>
+		<li><a href="#petownermatch" data-icon="heart">Match</a></li>
+		<li><a href="#petownerhome" data-icon="home">Home</a></li>
+		<li><a href="#petowneruser" data-icon="user">Profile</a></li>
+		</ul>
+		</div> 
+	</div>
+	
+</div><!-- /page -->
+
+	
+	
+	
+	
+	
+<!-- Pet owner user view  page -->
+<div data-role="page" id="petownerview">
+
+<!-- /header -->
+
+	<div data-role="header" style="background-color:#96BDE7; color:#FFFFFF;" data-position="fixed">
+		<a href="#petowneruser" data-transition="slide" data-direction="reverse" style="text-decoration: none !important; color:#FFFFFF; font-weight: 400; background-color:transparent; border: none;border: none !important;box-shadow: none !important; outline: 0;">Back</a>
+		<h1>Your Profile</h1>
+	</div>
+	
+	<!-- /content -->
+	<div class="main" id="getpetownerview">
+	
+	</div>
+
+	<div data-role="footer" data-position="fixed">
+	<div data-role="navbar">
+		<ul>
+		<li><a href="#petownermatch" data-icon="heart">Match</a></li>
+		<li><a href="#petownerhome" data-icon="home">Home</a></li>
+		<li><a href="#petowneruser" data-icon="user">Profile</a></li>
+		</ul>
+		</div> 
+	</div>
+	
+</div><!-- /page -->
+	
+
+	
+<!-- Pet owner user edit  page -->
+<div data-role="page" id="petowneredit">
+
+<!-- /header -->
+
+	<div data-role="header" style="background-color:#96BDE7; color:#FFFFFF;" data-position="fixed">
+		<a href="#petownerview" data-transition="slide" data-direction="reverse" style="text-decoration: none !important; color:#FFFFFF; font-weight: 400; background-color:transparent; border: none;border: none !important;box-shadow: none !important; outline: 0;">Back</a>
+		<h1>Edit Your Profile</h1>
+	</div>
+	
+	<div class="ui-grid-a" id="petowneredithead" style="line-height:80%">
+	
+	</div>	
+
+<div role="main" class="ui-content" style="margin: 3%">
+		<form method="post" action="http://websys3.stern.nyu.edu/websysF18/websysF182/PHP/editpetownerprofile.php" id="editpetownerform">
+		<div class="ui-grid-a">
+			<label for="fname">Update Your Profile:</label>
+			<div class="ui-block-a" style="width:45%; margin-right: 5%"><input type="text" name="fname" id="" value="" placeholder="First name"></div>
+			<div class="ui-block-b" style="width:45%; margin-left: 5%"><input type="text" name="lname" id="" value="" placeholder="Last name"></div>
+			</div>
+		<select name="gender" id="" data-native-menu="false">
+			<option value="">Gender</option>
+			<option value="Male">Male</option>
+			<option value="Female">Female</option>
+		</select>
+		<label for="DOB">Date of Birth:</label>
+		<input type="date" name="DOB" id="" value="">
+		<input type="text" name="phone" id="" value="" placeholder="Your Phone Number">
+		<label for="location" class="select">Location:</label>
+		<select name="location" id="" data-native-menu="false">
+			<option value="">Your Location</option>
+			<option value="Manhattan">Manhattan</option>
+			<option value="Brooklyn">Brooklyn</option>
+			<option value="Queens">Queens</option>
+			<option value="Bronx">The Bronx</option>
+			<option value="StatenIsland">Staten Island</option>
+		</select>
+		<!--
+		<label for="image">Your Photo:</label>
+		<input type="file" name="image" id="" value="">
+		-->
+		<button type="submit" name="petownereditsubmit" id="petownereditsubmit" value="submit" style="background-color:#96BDE7; color:#FFFFFF; font-size: 15px; text-align: center; vertical-align: middle">Update Your information</button>
+		</form>
+		<span id="petownereditresult"></span>
+	</div><!-- /content -->
+	<div data-role="footer" data-position="fixed">
+	<div data-role="navbar">
+		<ul>
+		<li><a href="#petownermatch" data-icon="heart">Match</a></li>
+		<li><a href="#petownerhome" data-icon="home">Home</a></li>
+		<li><a href="#petowneruser" data-icon="user">Profile</a></li>
+		</ul>
+		</div> 
+	</div>
+	
+</div><!-- /page -->
+	
+	
+	
+	
+	
+
+<!-- Pet owner pet info view  page -->
+<div data-role="page" id="petinfoview">
+
+<!-- /header -->
+
+	<div data-role="header" style="background-color:#96BDE7; color:#FFFFFF;" data-position="fixed">
+		<a href="#petowneruser" data-transition="slide" data-direction="reverse" style="text-decoration: none !important; color:#FFFFFF; font-weight: 400; background-color:transparent; border: none;border: none !important;box-shadow: none !important; outline: 0;">Back</a>
+		<h1>Your Profile</h1>
+	</div>
+	
+	<!-- /content -->
+	<div class="main" id="getpetinfoview">
+	
+	</div>
+
+	<div data-role="footer" data-position="fixed">
+	<div data-role="navbar">
+		<ul>
+		<li><a href="#petownermatch" data-icon="heart">Match</a></li>
+		<li><a href="#petownerhome" data-icon="home">Home</a></li>
+		<li><a href="#petowneruser" data-icon="user">Profile</a></li>
+		</ul>
+		</div> 
+	</div>
+	
+</div><!-- /page -->
+	
+	
+<!-- Pet owner pet info edit  page -->
+<div data-role="page" id="petinfoedit">
+
+<!-- /header -->
+
+	<div data-role="header" style="background-color:#96BDE7; color:#FFFFFF;" data-position="fixed">
+		<a href="#petinfoview" data-transition="slide" data-direction="reverse" style="text-decoration: none !important; color:#FFFFFF; font-weight: 400; background-color:transparent; border: none;border: none !important;box-shadow: none !important; outline: 0;">Back</a>
+		<h1>Edit Your Pet</h1>
+	</div>
+	
+
+	<div role="main" class="ui-content" style="margin: 3%">
+		<h3>Update your pet's Profile</h3>
+		<form method="post" action="http://websys3.stern.nyu.edu/websysF18/websysF182/PHP/editpetinfo.php" id="editpetinfoform">
+		<input type="text" name="pname" id="" value="" placeholder="Pet's Name">
+		<label for="age" class="select">Age:</label>
+		<select name="age" id="" data-native-menu="false">
+    		<option value="">Choose Your Pet's Age Range</option>
+      		<option value="Less than 1 year old">Less than 1 year old</option>
+        	<option value="2-4 years old">2-4 years old</option>
+        	<option value="4-6 years old">4-6 years old</option>
+			<option value="6-8 years old">6-8 years old</option>
+			<option value="8-10 years old">8-10 years old</option>
+			<option value="Over 10 years old">Over 10 years old</option>
+		</select>
+		<label for="gender" class="select">Gender:</label>
+		<select name="gender" id="" data-native-menu="false">
+    		<option value="">Choose Your Pet's Gender</option>
+        	<option value="Male">Male</option>
+        	<option value="Female">Female</option>
+		</select>
+		<label for="breed" class="select">Breed:</label>
+		<select name="breed" id="" data-native-menu="false">
+    		<option value="">Choose Breed of Your Pet</option>
+        	<option value="Cocker Spaniel">Cocker Spaniel</option>
+       	 	<option value="Beagel">Beagel</option>
+        	<option value="Boston Terrier">Boston Terrier</option>
+			<option value="Golden Retriever">Golden Retriever</option>
+			<option value="Poodie">Poodie</option>
+			<option value="Pomeranian">Pomeranian</option>
+		</select>
+		<label for="neutured" class="select">Neutured:</label>
+		<select name="neutured" id="" data-native-menu="false">
+			<option value="">Choose Neutured Status of Your Pet</option>
+        	<option value="Yes">Yes</option>
+       	 	<option value="No">No</option>
+		</select>
+		<label for="weight">Pet's Weight:</label>
+		<input type="text" name="weight" id="" value="" placeholder="kg">
+		<!--
+		<label for="image">Pet's Photo:</label>
+		<input type="file" name="image" id="" value="">
+		-->
+		<button type="submit" name="editpetinfosubmit" id="editpetinfosubmit" value="submit" style="background-color:#96BDE7; color:#FFFFFF; font-size: 15px; text-align: center; vertical-align: middle">Update Pet's Profile</button>
+		</form>
+		<span id="editpetinforesult"></span>
+	</div>
+	<div data-role="footer" data-position="fixed">
+	<div data-role="navbar">
+		<ul>
+		<li><a href="#petownermatch" data-icon="heart">Match</a></li>
+		<li><a href="#petownerhome" data-icon="home">Home</a></li>
+		<li><a href="#petowneruser" data-icon="user">Profile</a></li>
+		</ul>
+		</div> 
+	</div>
+	
+</div><!-- /page -->
+		
+	
+
+
+<!--==================================================Pet Owner match Page =========================================-->
+	
+
+<!-- Pet owner match page -->
+<div data-role="page" id="petownermatch">
+
+<!-- /header -->
+
+	<div data-role="header" style="background-color:#96BDE7; color:#FFFFFF;" data-position="fixed">
+		<h1>Match</h1>
+	</div><!-- /content -->
+
+	
+	<div data-role="footer" data-position="fixed">
+	<div data-role="navbar">
+		<ul>
+		<li><a href="#petownermatch" data-icon="heart">Match</a></li>
+		<li><a href="#petownerhome" data-icon="home">Home</a></li>
+		<li><a href="#petowneruser" data-icon="user">Profile</a></li>
+		</ul>
+		</div> 
+	</div>
+	
+</div><!-- /page -->
+
+<!--==================================================Get Help Pet owner============================================-->
+
+	<!-- Pet lover match page -->
+<div data-role="page" id="petownergethelp">
+
+<!-- /header -->
+
+	<div data-role="header" style="background-color:#96BDE7; color:#FFFFFF;" data-position="fixed">
+		<a href="#petowneruser" data-transition="slide" data-direction="reverse" style="text-decoration: none !important; color:#FFFFFF; font-weight: 400; background-color:transparent; border: none;border: none !important;box-shadow: none !important; outline: 0;">Back</a>
+		<h1>Get Help</h1>
+	</div>
+    <div style="margin-left: 5%"><p style="text-align: left; font-size: 24px;">Need Any Help?</p></div>
+	<br>
+	<div style="margin-left: 5%"><p style="text-align: left; font-size: 20px; font-weight: 200;">Contact Us</p></div>
+	<hr style="color:rgba(00, 00, 00, 0.05); margin-left: 5%; margin-right: 5%">
+	<div style="margin-left: 5%"><p style="text-align: left; font-size: 18px; font-weight: 100;">Email: help@petpal.com</p></div>
+	<hr style="color:rgba(00, 00, 00, 0.05); margin-left: 5%; margin-right: 5%">
+	<div style="margin-left: 5%"><p style="text-align: left; font-size: 18px; font-weight: 100;">Phone: +1 333-333-3333</p></div>
+	<hr style="color:rgba(00, 00, 00, 0.05); margin-left: 5%; margin-right: 5%">
+	<div data-role="footer" data-position="fixed">
+	<div data-role="navbar">
+		<ul>
+		<li><a href="#petownermatch" data-icon="heart">Match</a></li>
+		<li><a href="#petownerhome" data-icon="home">Home</a></li>
+		<li><a href="#petowneruser" data-icon="user">Profile</a></li>
+		</ul>
+		</div> 
+	</div>
+	
+</div><!-- /page -->
+	
+	
+<!--==================================================Feedback Pet owner============================================-->
+
+	<!-- Pet lover match page -->
+<div data-role="page" id="petownerfeedback">
+
+<!-- /header -->
+
+	<div data-role="header" style="background-color:#96BDE7; color:#FFFFFF;" data-position="fixed">
+		<a href="#petowneruser" data-transition="slide" data-direction="reverse" style="text-decoration: none !important; color:#FFFFFF; font-weight: 400; background-color:transparent; border: none;border: none !important;box-shadow: none !important; outline: 0;">Back</a>
+		<h1>Feedback</h1>
+	</div>
+    <div style="margin-left: 5%"><p style="text-align: left; font-size: 24px;">Give Feedback</p></div>
+	<br>
+	<div style="margin-left: 5%; margin-right: 5%"><p style="text-align: left; font-size: 15px; font-weight: 100;">We’re always working to improve the Petpal experience, so we’d love to hear what’s working and how we can do better</p></div>
+	<hr style="color:rgba(00, 00, 00, 0.05); margin-left: 5%; margin-right: 5%">
+	<br>
+	<div style="margin-left: 5%"><p style="text-align: left; font-size: 20px; font-weight: 200;">Send your feedback to:</p></div>
+	<div style="margin-left: 5%"><p style="text-align: left; font-size: 18px; font-weight: 100;">feedback@petpal.com</p></div>
+	<hr style="color:rgba(00, 00, 00, 0.05); margin-left: 5%; margin-right: 5%">
+	<div data-role="footer" data-position="fixed">
+	<div data-role="navbar">
+		<ul>
+		<li><a href="#petownermatch" data-icon="heart">Match</a></li>
+		<li><a href="#petownerhome" data-icon="home">Home</a></li>
+		<li><a href="#petowneruser" data-icon="user">Profile</a></li>
+		</ul>
+		</div> 
+	</div>
+	
+</div><!-- /page -->
+		
+	
+	
+	
+	
+	
+	
+<!--==================================================Pet Lover HomePage =========================================-->
+	
+	
+<!-- Pet lover homepage page -->
+<div data-role="page" id="petloverhome">
+
+<!-- /header -->
+
+	<div data-role="header" style="background-color:#96BDE7; color:#FFFFFF;" data-position="fixed">
+		<h1>Home</h1>
+	</div><!-- /content -->
+	<div class="main" id="petloverhomecontent">
+	
+	</div>
+	<div data-role="footer" data-position="fixed">
+	<div data-role="navbar">
+		<ul>
+		<li><a href="#petlovermatch" data-icon="heart">Match</a></li>
+		<li><a href="#petloverhome" data-icon="home">Home</a></li>
+		<li><a href="#petloveruser" data-icon="user">Profile</a></li>
+		</ul>
+		</div> 
+	</div>
+	
+</div><!-- /page -->
+	
+<!--==================================================Pet lover Subpage  ==========================================-->
+<!-- Pet owner sub page -->
+<div data-role="page" id="petloversubpage">
+
+<!-- /header -->
+
+	<div data-role="header" style="background-color:#96BDE7; color:#FFFFFF;" data-position="fixed">
+		<a href="#petloverhome" data-transition="slide" data-direction="reverse" style="text-decoration: none !important; color:#FFFFFF; font-weight: 400; background-color:transparent; border: none;border: none !important;box-shadow: none !important; outline: 0;">Back</a>
+		<h1>Detail</h1>
+	</div>
+	<!-- /content -->
+	<div class="main" id="petloversubpagecontent">
+	
+	</div>
+	<div data-role="footer" data-position="fixed">
+	<div data-role="navbar">
+		<ul>
+		<li><a href="#petownermatch" data-icon="heart">Match</a></li>
+		<li><a href="#petownerhome" data-icon="home">Home</a></li>
+		<li><a href="#petowneruser" data-icon="user">Profile</a></li>
+		</ul>
+		</div> 
+	</div>
+	
+</div><!-- /page -->	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+<!--==================================================Pet Lover User Page =========================================-->
+	
+<!-- Pet lover user page -->
+<div data-role="page" id="petloveruser">
+
+<!-- /header -->
+
+	<div data-role="header" style="background-color:#96BDE7; color:#FFFFFF;" data-position="fixed">
+		<h1>Profile</h1>
+		
+	</div>
+	
+	<!-- /content -->
+	<div class="ui-grid-a" id="petloverhead">
+	
+	</div>
+	<hr style="color:rgba(00, 00, 00, 0.05); margin-left: 3%; margin-right: 3%">
+	<div style="margin-left: 3%; margin-right: 5%"><a href="#petloverview" class="ui-btn ui-icon-user ui-btn-icon-right" data-transition="slide" style="background-color:rgba(00, 00, 00, 0);"><p style="text-align: left; font-size: 16px; font-weight: 100;">View and edit profile</p></a></div>
+	<hr style="color:rgba(00, 00, 00, 0.05); margin-left: 3%; margin-right: 3%">
+	<div style="margin-left: 3%; margin-right: 5%"><a href="#petlovergethelp" class="ui-btn ui-icon-phone ui-btn-icon-right" data-transition="slide" style="background-color:rgba(00, 00, 00, 0);"><p style="text-align: left; font-size: 16px; font-weight: 100;">Get help</p></a></div>
+	<hr style="color:rgba(00, 00, 00, 0.05); margin-left: 3%; margin-right: 3%">
+	<div style="margin-left: 3%; margin-right: 5%"><a href="#petloverfeedback" class="ui-btn ui-icon-comment ui-btn-icon-right" data-transition="slide" style="background-color:rgba(00, 00, 00, 0);"><p style="text-align: left; font-size: 16px; font-weight: 100;">Give us feedback</p></a></div>
+	<hr style="color:rgba(00, 00, 00, 0.05); margin-left: 3%; margin-right: 3%">
+	<div style="margin-left: 3%; margin-right: 5%"><a href="#login" class="ui-btn ui-icon-delete ui-btn-icon-right" data-transition="slide" style="background-color:rgba(00, 00, 00, 0);"><p style="text-align: left; font-size: 16px; font-weight: 100;">Log out</p></a></div>
+	<div data-role="footer" data-position="fixed">
+	<div data-role="navbar">
+		<ul>
+		<li><a href="#petlovermatch" data-icon="heart">Match</a></li>
+		<li><a href="#petloverhome" data-icon="home">Home</a></li>
+		<li><a href="#petloveruser" data-icon="user">Profile</a></li>
+		</ul>
+		</div> 
+	</div>
+	
+</div><!-- /page -->
+	
+	
+<!-- Pet lover user view  page -->
+<div data-role="page" id="petloverview">
+
+<!-- /header -->
+
+	<div data-role="header" style="background-color:#96BDE7; color:#FFFFFF;" data-position="fixed">
+		<a href="#petloveruser" data-transition="slide" data-direction="reverse" style="text-decoration: none !important; color:#FFFFFF; font-weight: 400; background-color:transparent; border: none;border: none !important;box-shadow: none !important; outline: 0;">Back</a>
+		<h1>Your Profile</h1>
+
+	</div>
+	
+	<!-- /content -->
+	<div class="main" id="getpetloverview">
+	
+	</div>
+	<div data-role="footer" data-position="fixed">
+	<div data-role="navbar">
+		<ul>
+		<li><a href="#petlovermatch" data-icon="heart">Match</a></li>
+		<li><a href="#petloverhome" data-icon="home">Home</a></li>
+		<li><a href="#petloveruser" data-icon="user">Profile</a></li>
+		</ul>
+		</div> 
+	</div>
+	
+</div><!-- /page -->
+		
+	
+	
+<!-- Pet lover user edit  page -->
+<div data-role="page" id="petloveredit">
+
+<!-- /header -->
+
+	<div data-role="header" style="background-color:#96BDE7; color:#FFFFFF;" data-position="fixed">
+		<a href="#petloverview" data-transition="slide" data-direction="reverse" style="text-decoration: none !important; color:#FFFFFF; font-weight: 400; background-color:transparent; border: none;border: none !important;box-shadow: none !important; outline: 0;">Back</a>
+		<h1>Edit Your Profile</h1>
+	</div>
+	
+	<div class="ui-grid-a" id="petloveredithead" style="line-height:80%">
+	
+	</div>	
+
+<div role="main" class="ui-content" style="margin: 3%">
+		<form method="post" action="http://websys3.stern.nyu.edu/websysF18/websysF182/PHP/editpetloverprofile.php" id="editpetloverform">
+		<div class="ui-grid-a">
+			<label for="fname">Update Your Profile:</label>
+			<div class="ui-block-a" style="width:45%; margin-right: 5%"><input type="text" name="fname" id="" value="" placeholder="First name"></div>
+			<div class="ui-block-b" style="width:45%; margin-left: 5%"><input type="text" name="lname" id="" value="" placeholder="Last name"></div>
+			</div>
+		<select name="gender" id="" data-native-menu="false">
+			<option value="">Gender</option>
+			<option value="Male">Male</option>
+			<option value="Female">Female</option>
+		</select>
+		<label for="DOB">Date of Birth:</label>
+		<input type="date" name="DOB" id="" value="">
+		<input type="text" name="phone" id="" value="" placeholder="Your Phone Number">
+		<label for="breed" class="select">Preference Breed:</label>
+		<select name="breed" id="" data-native-menu="false">
+			<option value="">Choose Your Preference Breed</option>
+        	<option value="Cocker Spaniel">Cocker Spaniel</option>
+       	 	<option value="Beagel">Beagel</option>
+        	<option value="Boston Terrier">Boston Terrier</option>
+			<option value="Golden Retriever">Golden Retriever</option>
+			<option value="Poodie">Poodie</option>
+			<option value="Pomeranian">Pomeranian</option>
+		</select>
+		<label for="location" class="select">Location:</label>
+		<select name="location" id="" data-native-menu="false">
+			<option value="">Your Location</option>
+			<option value="Manhattan">Manhattan</option>
+			<option value="Brooklyn">Brooklyn</option>
+			<option value="Queens">Queens</option>
+			<option value="Bronx">The Bronx</option>
+			<option value="StatenIsland">Staten Island</option>
+		</select>
+		<!--
+		<label for="image">Your Photo:</label>
+		<input type="file" name="image" id="" value="">
+		-->
+		<button type="submit" name="petlovereditsubmit" id="petlovereditsubmit" value="submit" style="background-color:#96BDE7; color:#FFFFFF; font-size: 15px; text-align: center; vertical-align: middle">Update Your information</button>
+		</form>
+		<span id="petlovereditresult"></span>
+	</div><!-- /content -->
+	<div data-role="footer" data-position="fixed">
+	<div data-role="navbar">
+		<ul>
+		<li><a href="#petlovermatch" data-icon="heart">Match</a></li>
+		<li><a href="#petloverhome" data-icon="home">Home</a></li>
+		<li><a href="#petloveruser" data-icon="user">Profile</a></li>
+		</ul>
+		</div> 
+	</div>
+	
+</div><!-- /page -->
+		
+	
+	
+
+	
+	
+	
+<!--==================================================Pet Lover match Page =========================================-->
+	
+<!-- Pet lover match page -->
+<div data-role="page" id="petlovermatch">
+
+<!-- /header -->
+
+	<div data-role="header" style="background-color:#96BDE7; color:#FFFFFF;" data-position="fixed">
+		<h1>Match</h1>
+	</div><!-- /content -->
+
+	
+	<div data-role="footer" data-position="fixed">
+	<div data-role="navbar">
+		<ul>
+		<li><a href="#petlovermatch" data-icon="heart">Match</a></li>
+		<li><a href="#petloverhome" data-icon="home">Home</a></li>
+		<li><a href="#petloveruser" data-icon="user">Profile</a></li>
+		</ul>
+		</div> 
+	</div>
+	
+</div><!-- /page -->
+	
+	
+	
+	
+	
+<!--==================================================Get Help Pet lover============================================-->
+
+	<!-- Pet lover match page -->
+<div data-role="page" id="petlovergethelp">
+
+<!-- /header -->
+
+	<div data-role="header" style="background-color:#96BDE7; color:#FFFFFF;" data-position="fixed">
+		<a href="#petloveruser" data-transition="slide" data-direction="reverse" style="text-decoration: none !important; color:#FFFFFF; font-weight: 400; background-color:transparent; border: none;border: none !important;box-shadow: none !important; outline: 0;">Back</a>
+		<h1>Get Help</h1>
+	</div>
+    <div style="margin-left: 5%"><p style="text-align: left; font-size: 24px;">Need Any Help?</p></div>
+	<br>
+	<div style="margin-left: 5%"><p style="text-align: left; font-size: 20px; font-weight: 200;">Contact Us</p></div>
+	<hr style="color:rgba(00, 00, 00, 0.05); margin-left: 5%; margin-right: 5%">
+	<div style="margin-left: 5%"><p style="text-align: left; font-size: 18px; font-weight: 100;">Email: help@petpal.com</p></div>
+	<hr style="color:rgba(00, 00, 00, 0.05); margin-left: 5%; margin-right: 5%">
+	<div style="margin-left: 5%"><p style="text-align: left; font-size: 18px; font-weight: 100;">Phone: +1 333-333-3333</p></div>
+	<hr style="color:rgba(00, 00, 00, 0.05); margin-left: 5%; margin-right: 5%">
+	<div data-role="footer" data-position="fixed">
+	<div data-role="navbar">
+		<ul>
+		<li><a href="#petlovermatch" data-icon="heart">Match</a></li>
+		<li><a href="#petloverhome" data-icon="home">Home</a></li>
+		<li><a href="#petloveruser" data-icon="user">Profile</a></li>
+		</ul>
+		</div> 
+	</div>
+	
+</div><!-- /page -->
+	
+	
+<!--==================================================Feedback Pet lover============================================-->
+
+	<!-- Pet lover match page -->
+<div data-role="page" id="petloverfeedback">
+
+<!-- /header -->
+
+	<div data-role="header" style="background-color:#96BDE7; color:#FFFFFF;" data-position="fixed">
+		<a href="#petloveruser" data-transition="slide" data-direction="reverse" style="text-decoration: none !important; color:#FFFFFF; font-weight: 400; background-color:transparent; border: none;border: none !important;box-shadow: none !important; outline: 0;">Back</a>
+		<h1>Feedback</h1>
+	</div>
+    <div style="margin-left: 5%"><p style="text-align: left; font-size: 24px;">Give Feedback</p></div>
+	<br>
+	<div style="margin-left: 5%; margin-right: 5%"><p style="text-align: left; font-size: 15px; font-weight: 100;">We’re always working to improve the Petpal experience, so we’d love to hear what’s working and how we can do better</p></div>
+	<hr style="color:rgba(00, 00, 00, 0.05); margin-left: 5%; margin-right: 5%">
+	<br>
+	<div style="margin-left: 5%"><p style="text-align: left; font-size: 20px; font-weight: 200;">Send your feedback to:</p></div>
+	<div style="margin-left: 5%"><p style="text-align: left; font-size: 18px; font-weight: 100;">feedback@petpal.com</p></div>
+	<hr style="color:rgba(00, 00, 00, 0.05); margin-left: 5%; margin-right: 5%">
+	<div data-role="footer" data-position="fixed">
+	<div data-role="navbar">
+		<ul>
+		<li><a href="#petlovermatch" data-icon="heart">Match</a></li>
+		<li><a href="#petloverhome" data-icon="home">Home</a></li>
+		<li><a href="#petloveruser" data-icon="user">Profile</a></li>
+		</ul>
+		</div> 
+	</div>
+	
+</div><!-- /page -->
+	
+	
+	
+	
+<!--=====================================================JavaScript=================================================-->
+
+<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/jquery.mobile-1.4.5.min.js"></script>
+	<script type="text/javascript">
+
+		
+		
+
+		
+		
+
+//sign up and login system
+	$("#petownersubmit").click(function(){
+			var data = $("#petownerform :input").serializeArray();
+			$.post( $("#petownerform").attr("action"),data,function(info){$("#petownerresult").html(info);});
+		});	
+	$("#petownerform").submit(function(){
+			return false;
+		});
+		
+		
+		
+	$("#petloversubmit").click(function(){
+			var data = $("#petloverform :input").serializeArray();
+			$.post( $("#petloverform").attr("action"),data,function(info){$("#petloverresult").html(info);});
+		});	
+	$("#petloverform").submit(function(){
+			return false;
+		});
+		
+		
+		
+		
+	$("#homelogin").click(function(){
+			var data = $("#homeloginform :input").serializeArray();
+			$.post( $("#homeloginform").attr("action"),data,function(info){$("#homeloginresult").html(info);});
+		});	
+	$("#homeloginform").submit(function(){
+			return false;
+		});
+		
+		
+		
+		
+	$("#petinfosubmit").click(function(){
+			var data = $("#petinfoform :input").serializeArray();
+			$.post( $("#petinfoform").attr("action"),data,function(info){$("#petinforesult").html(info);});
+		});	
+	$("#petinfoform").submit(function(){
+			return false;
+		});
+
+		
+	$("#petownereditsubmit").click(function(){
+			var data = $("#editpetownerform :input").serializeArray();
+			$.post( $("#editpetownerform").attr("action"),data,function(info){$("#petownereditresult").html(info);});
+		});	
+	$("#editpetownerform").submit(function(){
+			return false;
+		});
+		
+		
+	$("#editpetinfosubmit").click(function(){
+			var data = $("#editpetinfoform :input").serializeArray();
+			$.post( $("#editpetinfoform").attr("action"),data,function(info){$("#editpetinforesult").html(info);});
+		});	
+	$("#editpetinfoform").submit(function(){
+			return false;
+		});
+		
+	$("#petlovereditsubmit").click(function(){
+			var data = $("#editpetloverform :input").serializeArray();
+			$.post( $("#editpetloverform").attr("action"),data,function(info){$("#petlovereditresult").html(info);});
+		});	
+	$("#editpetloverform").submit(function(){
+			return false;
+		});
+		
+		
+//homepage
+		
+		
+//pet owner home page	
+	function getpetownerhomepage() {
+/* testwebservice user returns a JSON object with an array of users IDs and login names (user_login)  */
+/* alert("in the gettheuser");  */
+		URL="http://websys3.stern.nyu.edu/websysF18/websysF182/PHP/getpetloverinfo.php";
+  		$.getJSON(URL, function(data){                      
+        console.log(data);		
+        $.each(data['users'], function(index, value) {
+/*            alert(value['user']['user_login']);   */
+              console.log(value);
+              /* set first option to be selected  */
+			  $('#petownerhomecontent').append("<div id="+ value['user']['EMAIL_ID'] +" onclick=\"clicked(this)\"><a href=\"#petownersubpage\" data-transition=\"slide\"><img src=\"img/petlover.jpg\" value="+ value['user']['EMAIL_ID'] + " style=\"width:100%;\"></a></div><div class=\"main\" style=\"margin-left:5%; margin-bottom:5% ;text-align:left;\"><h3 class=\"petloverintro\">" + value['user']['FNAME'] + " " + value['user']['LNAME'] + "</h3> <p>" + value['user']['LOCATION'] + "</p> <p>Preferred Breed:" + " "+ value['user']['BREED'] + "</p></div>" );
+               //$('#userform').append("<option value=" + value['user']['first_name']  + ">" + value['user']['first_name'] + "</option>"); 
+                               		              }
+                                    );			
+                                  }
+		 );
+                       };
+		
+		
+		
+		
+		
+//pet owner subpage
+    function getpetownersubpage() { 
+/* testwebservice user returns a JSON object with an array of users IDs and login names (user_login)  */ 
+/* alert("in the gettheuser");  */ 
+        URL="http://websys3.stern.nyu.edu/websysF18/websysF182/PHP/petownersubpage.php"; 
+          $.getJSON(URL, function(data){                       
+        console.log(data);         
+        $.each(data['users'], function(index, value) { 
+/*            alert(value['user']['user_login']);   */ 
+              console.log(value); 
+              /* set first option to be selected  */ 
+              $('#petownersubpagecontent').append("<div class= \"ui-grid-a\"><div class=\"ui-block-a\" style=\"margin-top:10px;padding-left:5%;height:100px;line-height:80%\"><h3>" + value['user']['FNAME'] +" "+ value['user']['LNAME'] + "</h3><p style=\"font-size:14px;\">"+ value['user']['LOCATION']  + "</p></div><div class=\"ui-block-b\" style=\"text-align:right;margin-top:10px;height:100px;padding-right:5%\"><a href=\"#\" data-transition=\"slide\"><img src=\"img/user.jpg\" id=" + value['user']['EMAIL_ID'] + " value="+ value['user']['EMAIL_ID'] + " style=\"height:70px;border-radius:50%;\"></a></div></div><div class= \"main\" style=\"margin-top:10px;padding-left:5%;padding-right:5%;height:70px;line-height:80%\"> <h3> Email </h3> <p style=\"font-size:14px;\">" + value['user']['EMAIL_ID'] + "</p><hr style=\"color:rgba(00, 00, 00, 0.05);\"></div><div class= \"main\" style=\"margin-top:10px;padding-left:5%;padding-right:5%;height:70px;line-height:80%\"> <h3> Mobile Phone </h3> <p style=\"font-size:14px;\">" + value['user']['PHONE'] + "</p><hr style=\"color:rgba(00, 00, 00, 0.05);\"></div><div class= \"main\" style=\"margin-top:10px;padding-left:5%;padding-right:5%;height:70px;line-height:80%\"> <h3> Date of Birth </h3> <p style=\"font-size:14px;\">" + value['user']['DOB'] + "</p><hr style=\"color:rgba(00, 00, 00, 0.05);\"></div><div class= \"main\" style=\"margin-top:10px;padding-left:5%; padding-right:5%; height:70px;line-height:80%\"> <h3> Preferred Breed </h3> <p style=\"font-size:14px;\">" + value['user']['BREED'] + "</p><hr style=\"color:rgba(00, 00, 00, 0.05);\"></div>"); 
+               //$('#userform').append("<option value=" + value['user']['first_name']  + ">" + value['user']['first_name'] + "</option>"); 
+                                                     } 
+                                    );             
+                                  } 
+         ); 
+                       }; 
+		
+		
+		
+		
+		
+		
+
+//pet lover home page			
+			
+	function getpetloverhomepage() {
+/* testwebservice user returns a JSON object with an array of users IDs and login names (user_login)  */
+/* alert("in the gettheuser");  */
+		URL="http://websys3.stern.nyu.edu/websysF18/websysF182/PHP/getpetinfo.php";
+  		$.getJSON(URL, function(data){                      
+        console.log(data);		
+        $.each(data['users'], function(index, value) {
+/*            alert(value['user']['user_login']);   */
+              console.log(value);
+              /* set first option to be selected  */
+			  $('#petloverhomecontent').append("<div id="+ value['user']['EMAIL_ID'] +" onclick=\"clicked(this)\"><a href=\"#petownersubpage\" data-transition=\"slide\"><a href=\"#petloversubpage\" data-transition=\"slide\"><img src=\"img/pet.jpg\" id=\"pet\" value="+ value['user']['PET_ID'] + " style=\"width:100%;\"></a></div><div class=\"main\" style=\"margin-left:5%; margin-bottom:5%; text-align:left;\"><h3 class=\"petloverintro\">" + value['user']['PNAME'] + " "  + "</h3> <p> Breed:" + " " + value['user']['BREED'] + ";  " + " Gender:" + " " + value['user']['GENDER'] + "</p> <p>Age:" + " " + value['user']['AGE'] + ";  " + " Weight:" + " " + value['user']['WEIGHT'] + "kg</p></div>" );
+               //$('#userform').append("<option value=" + value['user']['first_name']  + ">" + value['user']['first_name'] + "</option>"); 
+                               		              }
+                                    );			
+                                  }
+		 );
+                       };
+		
+
+		
+//pet owner subpage
+    function getpetloversubpage() { 
+/* testwebservice user returns a JSON object with an array of users IDs and login names (user_login)  */ 
+/* alert("in the gettheuser");  */ 
+        URL="http://websys3.stern.nyu.edu/websysF18/websysF182/PHP/petloversubpage.php"; 
+          $.getJSON(URL, function(data){                       
+        console.log(data);         
+        $.each(data['users'], function(index, value) { 
+/*            alert(value['user']['user_login']);   */ 
+              console.log(value); 
+              /* set first option to be selected  */ 
+              $('#petloversubpagecontent').append("<div class= \"ui-grid-a\"><div class=\"ui-block-a\" style=\"margin-top:10px;padding-left:5%;height:100px;line-height:80%\"><h3>" + value['user']['PNAME']  + "</h3><p style=\"font-size:14px;\">Gender:" +" "+ value['user']['GENDER']  + "</p></div><div class=\"ui-block-b\" style=\"text-align:right;margin-top:10px;height:100px;padding-right:5%\"><a href=\"#\" data-transition=\"slide\"><img src=\"img/pet.jpg\" id=" + value['user']['PET_ID'] + " value="+ value['user']['PET_ID'] + " style=\"height:70px;border-radius:50%;\"></a></div></div><div class= \"main\" style=\"margin-top:10px;padding-left:5%;padding-right:5%;height:70px;line-height:80%\"> <h3> Breed </h3> <p style=\"font-size:14px;\">" + value['user']['BREED'] + "</p><hr style=\"color:rgba(00, 00, 00, 0.05); \"></div><div class= \"main\" style=\"margin-top:10px;padding-left:5%;padding-right:5%;height:70px;line-height:80%\"> <h3> Age </h3> <p style=\"font-size:14px;\">" + value['user']['AGE'] + "</p><hr style=\"color:rgba(00, 00, 00, 0.05);\"></div><div class= \"main\" style=\"margin-top:10px;padding-left:5%;padding-right:5%;height:70px;line-height:80%\"> <h3> Weight </h3> <p style=\"font-size:14px;\">" + value['user']['WEIGHT'] + "kg</p><hr style=\"color:rgba(00, 00, 00, 0.05);\"></div><div class= \"main\" style=\"margin-top:10px;padding-left:5%;padding-right:5%;height:70px;line-height:80%\"> <h3> Neutured </h3> <p style=\"font-size:14px;\">" + value['user']['NEUTURED'] + "</p><hr style=\"color:rgba(00, 00, 00, 0.05);\"></div>"); 
+               //$('#userform').append("<option value=" + value['user']['first_name']  + ">" + value['user']['first_name'] + "</option>"); 
+                                                     } 
+                                    );             
+                                  } 
+         ); 
+                       }; 
+		
+				
+		
+		
+//Profile page
+		
+//Pet owner profile header
+	function getpetownerheader() {
+/* testwebservice user returns a JSON object with an array of users IDs and login names (user_login)  */
+/* alert("in the gettheuser");  */
+		URL="http://websys3.stern.nyu.edu/websysF18/websysF182/PHP/getpetowneruserinfo.php";
+  		$.getJSON(URL, function(data){                      
+        console.log(data);		
+        $.each(data['users'], function(index, value) {
+/*            alert(value['user']['user_login']);   */
+              console.log(value);
+              /* set first option to be selected  */
+			  $('#petownerhead').append("<div class=\"ui-block-a\" style=\"margin-top:10px;padding-left:5%;height:100px;\"><h2> Hi, "  + " " + value['user']['FNAME'] + "</h2></div><div class=\"ui-block-b\" style=\"text-align:right;margin-top:10px;height:100px;padding-right:5%\"><a href=\"#\" data-transition=\"slide\"><img src=\"img/user.jpg\" id=" + value['user']['EMAIL_ID'] + " value="+ value['user']['EMAIL_ID'] + " style=\"height:70px;border-radius:50%;\"></a></div>" );
+               //$('#userform').append("<option value=" + value['user']['first_name']  + ">" + value['user']['first_name'] + "</option>"); 
+                               		              }
+                                    );			
+                                  }
+		 );
+                       };
+		
+		
+		
+		
+//Pet owner profile view 
+    function getpetownerview() { 
+/* testwebservice user returns a JSON object with an array of users IDs and login names (user_login)  */ 
+/* alert("in the gettheuser");  */ 
+        URL="http://websys3.stern.nyu.edu/websysF18/websysF182/PHP/getpetowneruserinfo.php"; 
+          $.getJSON(URL, function(data){                       
+        console.log(data);         
+        $.each(data['users'], function(index, value) { 
+/*            alert(value['user']['user_login']);   */ 
+              console.log(value); 
+              /* set first option to be selected  */ 
+              $('#getpetownerview').append("<div class= \"ui-grid-a\"><div class=\"ui-block-a\" style=\"margin-top:10px;padding-left:5%;height:100px;line-height:80%\"><h3>" + value['user']['FNAME'] +" "+ value['user']['LNAME'] + "</h3><p style=\"font-size:14px;\">"+ value['user']['LOCATION']  + "</p><a href=\"#petowneredit\" style=\"text-decoration: none !important; font-size:14px; color: #000000; font-weight: 400;\">Edit Profile</a></div><div class=\"ui-block-b\" style=\"text-align:right;margin-top:10px;height:100px;padding-right:5%\"><a href=\"#\" data-transition=\"slide\"><img src=\"img/user.jpg\" id=" + value['user']['EMAIL_ID'] + " value="+ value['user']['EMAIL_ID'] + " style=\"height:70px;border-radius:50%;\"></a></div></div><div class= \"main\" style=\"margin-top:10px;padding-left:5%;padding-right:5%;height:70px;line-height:80%\"> <h3> Email </h3> <p style=\"font-size:14px;\">" + value['user']['EMAIL_ID'] + "</p><hr style=\"color:rgba(00, 00, 00, 0.05); \"></div><div class= \"main\" style=\"margin-top:10px;padding-left:5%;padding-right:5%;height:70px;line-height:80%\"> <h3> Mobile Phone </h3> <p style=\"font-size:14px;\">" + value['user']['PHONE'] + "</p><hr style=\"color:rgba(00, 00, 00, 0.05);\"></div><div class= \"main\" style=\"margin-top:10px;padding-left:5%;padding-right:5%;height:70px;line-height:80%\"> <h3> Date of Birth </h3> <p style=\"font-size:14px;\">" + value['user']['DOB'] + "</p><hr style=\"color:rgba(00, 00, 00, 0.05);\"></div>"); 
+               //$('#userform').append("<option value=" + value['user']['first_name']  + ">" + value['user']['first_name'] + "</option>"); 
+                                                     } 
+                                    );             
+                                  } 
+         ); 
+                       }; 
+
+
+		
+//Pet owner edit header
+	function getpetownereditheader() {
+/* testwebservice user returns a JSON object with an array of users IDs and login names (user_login)  */
+/* alert("in the gettheuser");  */
+		URL="http://websys3.stern.nyu.edu/websysF18/websysF182/PHP/getpetowneruserinfo.php";
+  		$.getJSON(URL, function(data){                      
+        console.log(data);		
+        $.each(data['users'], function(index, value) {
+/*            alert(value['user']['user_login']);   */
+              console.log(value);
+              /* set first option to be selected  */
+			  $('#petowneredithead').append("<div class=\"ui-block-a\" style=\"margin-top:10px;padding-left:5%;height:80px;\"><h2>"  + value['user']['FNAME'] + " " + value['user']['LNAME'] + "</h2><p>" +value['user']['EMAIL_ID'] + "</p></div><div class=\"ui-block-b\" style=\"text-align:right;margin-top:10px;height:100px;padding-right:5%\"><a href=\"#\" data-transition=\"slide\"><img src=\"img/user.jpg\" id=" + value['user']['EMAIL_ID'] + " value="+ value['user']['EMAIL_ID'] + " style=\"height:70px;border-radius:50%;\"></a></div>" );
+               //$('#userform').append("<option value=" + value['user']['first_name']  + ">" + value['user']['first_name'] + "</option>"); 
+                               		              }
+                                    );			
+                                  }
+		 );
+                       };
+		
+
+//Pet owner profile view 
+    function getpetinfoview() { 
+/* testwebservice user returns a JSON object with an array of users IDs and login names (user_login)  */ 
+/* alert("in the gettheuser");  */ 
+        URL="http://websys3.stern.nyu.edu/websysF18/websysF182/PHP/getspecificpetinfo.php"; 
+          $.getJSON(URL, function(data){                       
+        console.log(data);         
+        $.each(data['users'], function(index, value) { 
+/*            alert(value['user']['user_login']);   */ 
+              console.log(value); 
+              /* set first option to be selected  */ 
+              $('#getpetinfoview').append("<div class= \"ui-grid-a\"><div class=\"ui-block-a\" style=\"margin-top:10px;padding-left:5%;height:100px;line-height:80%\"><h3>" + value['user']['PNAME']  + "</h3><p style=\"font-size:14px;\">Gender:" +" "+ value['user']['GENDER']  + "</p><a href=\"#petinfoedit\" style=\"text-decoration: none !important; font-size:14px; color: #000000; font-weight: 400;\">Edit Profile</a></div><div class=\"ui-block-b\" style=\"text-align:right;margin-top:10px;height:100px;padding-right:5%\"><a href=\"#\" data-transition=\"slide\"><img src=\"img/pet.jpg\" id=" + value['user']['PET_ID'] + " value="+ value['user']['PET_ID'] + " style=\"height:70px;border-radius:50%;\"></a></div></div><div class= \"main\" style=\"margin-top:10px;padding-left:5%;padding-right:5%;height:70px;line-height:80%\"> <h3> Breed </h3> <p style=\"font-size:14px;\">" + value['user']['BREED'] + "</p><hr style=\"color:rgba(00, 00, 00, 0.05);\"></div><div class= \"main\" style=\"margin-top:10px;padding-left:5%;padding-right:5%;height:70px;line-height:80%\"> <h3> Age </h3> <p style=\"font-size:14px;\">" + value['user']['AGE'] + "</p><hr style=\"color:rgba(00, 00, 00, 0.05);\"></div><div class= \"main\" style=\"margin-top:10px;padding-left:5%;padding-right:5%;height:70px;line-height:80%\"> <h3> Weight </h3> <p style=\"font-size:14px;\">" + value['user']['WEIGHT'] + "kg</p><hr style=\"color:rgba(00, 00, 00, 0.05);\"></div><div class= \"main\" style=\"margin-top:10px;padding-left:5%;padding-right:5%;height:70px;line-height:80%\"> <h3> Neutured </h3> <p style=\"font-size:14px;\">" + value['user']['NEUTURED'] + "</p><hr style=\"color:rgba(00, 00, 00, 0.05);\"></div>"); 
+               //$('#userform').append("<option value=" + value['user']['first_name']  + ">" + value['user']['first_name'] + "</option>"); 
+                                                     } 
+                                    );             
+                                  } 
+         ); 
+                       }; 
+		
+		
+
+//Pet owner profile header
+	function getpetloverheader() {
+/* testwebservice user returns a JSON object with an array of users IDs and login names (user_login)  */
+/* alert("in the gettheuser");  */
+		URL="http://websys3.stern.nyu.edu/websysF18/websysF182/PHP/getspecificpetlover.php";
+  		$.getJSON(URL, function(data){                      
+        console.log(data);		
+        $.each(data['users'], function(index, value) {
+/*            alert(value['user']['user_login']);   */
+              console.log(value);
+              /* set first option to be selected  */
+			  $('#petloverhead').append("<div class=\"ui-block-a\" style=\"margin-top:10px;padding-left:5%;height:100px;\"><h2> Hi, "  + " " + value['user']['FNAME'] + "</h2></div><div class=\"ui-block-b\" style=\"text-align:right;margin-top:10px;height:100px;padding-right:5%\"><a href=\"#\" data-transition=\"slide\"><img src=\"img/user.jpg\" id=" + value['user']['EMAIL_ID'] + " value="+ value['user']['EMAIL_ID'] + " style=\"height:70px;border-radius:50%;\"></a></div>" );
+               //$('#userform').append("<option value=" + value['user']['first_name']  + ">" + value['user']['first_name'] + "</option>"); 
+                               		              }
+                                    );			
+                                  }
+		 );
+                       };
+		
+		
+		
+		
+//Pet lover profile view 
+    function getpetloverview() { 
+/* testwebservice user returns a JSON object with an array of users IDs and login names (user_login)  */ 
+/* alert("in the gettheuser");  */ 
+        URL="http://websys3.stern.nyu.edu/websysF18/websysF182/PHP/getspecificpetlover.php"; 
+          $.getJSON(URL, function(data){                       
+        console.log(data);         
+        $.each(data['users'], function(index, value) { 
+/*            alert(value['user']['user_login']);   */ 
+              console.log(value); 
+              /* set first option to be selected  */ 
+              $('#getpetloverview').append("<div class= \"ui-grid-a\"><div class=\"ui-block-a\" style=\"margin-top:10px;padding-left:5%;height:100px;line-height:80%\"><h3>" + value['user']['FNAME'] +" "+ value['user']['LNAME'] + "</h3><p style=\"font-size:14px;\">"+ value['user']['LOCATION']  + "</p><a href=\"#petloveredit\" style=\"text-decoration: none !important; font-size:14px; color: #000000; font-weight: 400;\">Edit Profile</a></div><div class=\"ui-block-b\" style=\"text-align:right;margin-top:10px;height:100px;padding-right:5%\"><a href=\"#\" data-transition=\"slide\"><img src=\"img/user.jpg\" id=" + value['user']['EMAIL_ID'] + " value="+ value['user']['EMAIL_ID'] + " style=\"height:70px;border-radius:50%;\"></a></div></div><div class= \"main\" style=\"margin-top:10px;padding-left:5%;padding-right:5%;height:70px;line-height:80%\"> <h3> Email </h3> <p style=\"font-size:14px;\">" + value['user']['EMAIL_ID'] + "</p><hr style=\"color:rgba(00, 00, 00, 0.05); \"></div><div class= \"main\" style=\"margin-top:10px;padding-left:5%;padding-right:5%;height:70px;line-height:80%\"> <h3> Mobile Phone </h3> <p style=\"font-size:14px;\">" + value['user']['PHONE'] + "</p><hr style=\"color:rgba(00, 00, 00, 0.05);\"></div><div class= \"main\" style=\"margin-top:10px;padding-left:5%;padding-right:5%;height:70px;line-height:80%\"> <h3> Date of Birth </h3> <p style=\"font-size:14px;\">" + value['user']['DOB'] + "</p><hr style=\"color:rgba(00, 00, 00, 0.05);\"></div><div class= \"main\" style=\"margin-top:10px;padding-left:5%;padding-right:5%;height:70px;line-height:80%\"> <h3> Preferred Breed </h3> <p style=\"font-size:14px;\">" + value['user']['BREED'] + "</p><hr style=\"color:rgba(00, 00, 00, 0.05);\"></div>"); 
+               //$('#userform').append("<option value=" + value['user']['first_name']  + ">" + value['user']['first_name'] + "</option>"); 
+                                                     } 
+                                    );             
+                                  } 
+         ); 
+                       }; 
+		
+		
+		
+
+//Pet owner lover header
+	function getpetlovereditheader() {
+/* testwebservice user returns a JSON object with an array of users IDs and login names (user_login)  */
+/* alert("in the gettheuser");  */
+		URL="http://websys3.stern.nyu.edu/websysF18/websysF182/PHP/getspecificpetlover.php";
+  		$.getJSON(URL, function(data){                      
+        console.log(data);		
+        $.each(data['users'], function(index, value) {
+/*            alert(value['user']['user_login']);   */
+              console.log(value);
+              /* set first option to be selected  */
+			  $('#petloveredithead').append("<div class=\"ui-block-a\" style=\"margin-top:10px;padding-left:5%;height:80px;\"><h2>"  + value['user']['FNAME'] + " " +  value['user']['LNAME'] +"</h2><p>" +value['user']['EMAIL_ID'] + "</p></div><div class=\"ui-block-b\" style=\"text-align:right;margin-top:10px;height:100px;padding-right:5%\"><a href=\"#\" data-transition=\"slide\"><img src=\"img/user.jpg\" id=" + value['user']['EMAIL_ID'] + " value="+ value['user']['EMAIL_ID'] + " style=\"height:70px;border-radius:50%;\"></a></div>" );
+               //$('#userform').append("<option value=" + value['user']['first_name']  + ">" + value['user']['first_name'] + "</option>"); 
+                               		              }
+                                    );			
+                                  }
+		 );
+                       };
+		
+//present homepage
+/*	
+$(document).ready(function() {
+   $("#viewport").attr("content","width=320");
+    /*  alert("in document.ready");  */
+    /* Call webservice to return list of users who have posted  */
+    /* and then creates select option for each user in the select dropdown list */
+/*	getpetownerhomepage();
+	getpetloverhomepage();
+	getpetownerheader();
+	getpetownerview();
+	getpetownereditheader();
+	getpetinfoview();
+	getpetloverheader();
+	getpetloverview();
+	getpetlovereditheader();
+
+/* In Jquery mobile, the default element is not set, so we need to pick one */
+    /* Pick the first to be selected, and then let the user change it  */  
+		
+
+    /*                    }
+            );
+	*/
+		
+$("#petownerhome").bind("pageshow",function(event,ui){
+  $("#petownerhomecontent").empty();
+  getpetownerhomepage();
+ });
+		
+$("#petloverhome").bind("pageshow",function(event,ui){
+  $("#petloverhomecontent").empty();
+  getpetloverhomepage();
+ });
+		
+		
+$("#petowneruser").bind("pageshow",function(event,ui){
+  $("#petownerhead").empty();
+  getpetownerheader();
+ });
+		
+
+$("#petownerview").bind("pageshow",function(event,ui){
+  $("#getpetownerview").empty();
+  getpetownerview();
+ });
+		
+		
+$("#petowneredit").bind("pageshow",function(event,ui){
+  $("#petowneredithead").empty();
+  getpetownereditheader();
+ });
+		
+		
+$("#petinfoview").bind("pageshow",function(event,ui){
+  $("#getpetinfoview").empty();
+  getpetinfoview();
+ });
+		
+		
+$("#petloveruser").bind("pageshow",function(event,ui){
+  $("#petloverhead").empty();
+  getpetloverheader();
+ });
+		
+		
+$("#petloverview").bind("pageshow",function(event,ui){
+  $("#getpetloverview").empty();
+  getpetloverview();
+ });
+		
+		
+$("#petloveredit").bind("pageshow",function(event,ui){
+  $("#petloveredithead").empty();
+  getpetlovereditheader();
+ });
+		
+$("#petownersubpage").bind("pageshow",function(event,ui){
+  $("#petownersubpagecontent").empty();
+  getpetownersubpage();
+ });
+		
+$("#petloversubpage").bind("pageshow",function(event,ui){
+  $("#petloversubpagecontent").empty();
+  getpetloversubpage();
+ });
+		
+
+	
+	</script>	
+	
+	
+</body>
+</html>

@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.example.hello" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>Petpal</name>
+    <description>
+        A sample Apache Cordova application that responds to the deviceready event.
+    </description>
+    <author email="dev@cordova.apache.org" href="http://cordova.io">
+        Apache Cordova Team
+    </author>
+    <content src="index.html" />
+    <plugin name="cordova-plugin-whitelist" spec="1" />
+    <access origin="*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+    <platform name="android">
+        <allow-intent href="market:*" />
+        <icon density="ldpi" src="res/icon/android/iconpetpal.jpeg" />
+        <icon density="mdpi" src="res/icon/android/iconpetpal.jpeg" />
+        <icon density="hdpi" src="res/icon/android/iconpetpal.jpeg" />
+        <icon density="xhdpi" src="res/icon/android/iconpetpal.jpeg" />
+        <icon density="xxhdpi" src="res/icon/android/iconpetpal.jpeg" />
+        <icon density="xxxhdpi" src="res/icon/android/iconpetpal.jpeg" />
+    </platform>
+    <platform name="ios">
+        <allow-intent href="itms:*" />
+        <allow-intent href="itms-apps:*" />
+        <icon height="180" src="res/icon/ios/iconpetpal.jpeg" width="180" />
+        <icon height="60" src="res/icon/ios/iconpetpal.jpeg" width="60" />
+        <icon height="120" src="res/icon/ios/iconpetpal.jpeg" width="120" />
+        <icon height="76" src="res/icon/ios/iconpetpal.jpeg" width="76" />
+        <icon height="152" src="res/icon/ios/iconpetpal.jpeg" width="152" />
+        <icon height="40" src="res/icon/ios/iconpetpal.jpeg" width="40" />
+        <icon height="80" src="res/icon/ios/iconpetpal.jpeg" width="80" />
+        <icon height="57" src="res/icon/ios/iconpetpal.jpeg" width="57" />
+        <icon height="114" src="res/icon/ios/iconpetpal.jpeg" width="114" />
+        <icon height="72" src="res/icon/ios/iconpetpal.jpeg" width="72" />
+        <icon height="144" src="res/icon/ios/iconpetpal.jpeg" width="144" />
+        <icon height="167" src="res/icon/ios/iconpetpal.jpeg" width="167" />
+        <icon height="29" src="res/icon/ios/iconpetpal.jpeg" width="29" />
+        <icon height="58" src="res/icon/ios/iconpetpal.jpeg" width="58" />
+        <icon height="50" src="res/icon/ios/iconpetpal.jpeg" width="50" />
+        <icon height="100" src="res/icon/ios/iconpetpal.jpeg" width="100" />
+        <icon height="167" src="res/icon/ios/iconpetpal.jpeg" width="167" />
+    </platform>
+    <engine name="ios" spec="^4.5.5" />
+    <engine name="android" spec="^7.1.4" />
+</widget>
